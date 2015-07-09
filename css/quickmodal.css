@@ -1,28 +1,25 @@
+/* --------------------------------------------------
+Base Styles
+-------------------------------------------------- */
 .modal {
     -webkit-transition: all 250ms ease;
     -moz-transition: all 250ms ease;
     -ms-transition: all 250ms ease;
     -o-transition: all 250ms ease;
     transition: all 250ms ease;
+    display: none;
+    opacity: 0;
     box-sizing: border-box;
     padding: 18px;
     background-color: #fff;
     border-radius: 3px;
-    width: 80%;
-    display: none;
-    opacity: 0;
-    margin-top: 0;
+    width: 60%;
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(1.5);
+    transform: translate(-50%, -50%);
     z-index: 9999;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
-}
-.modal.visible {
-    opacity: 1;
-    margin-top: -100px;
-    transform: translate(-50%, -50%) scale(1);
 }
 .modal .close-modal {
     position: absolute;
@@ -59,4 +56,64 @@
 }
 #modal-background.visible {
     opacity: 1;
+}
+
+/* --------------------------------------------------
+Animation Closed States
+-------------------------------------------------- */
+.modal.animation-none {
+    -webkit-transition: none;
+    -moz-transition: none;
+    -ms-transition: none;
+    -o-transition: none;
+    transition: none;
+}
+.modal.animation-fade {
+    /* No changes from base */
+}
+.modal.animation-fade-up {
+    transform: translate(-50%, 150%) scale(1);
+}
+.modal.animation-fade-right {
+    transform: translate(-150%, -50%) scale(1);
+}
+.modal.animation-fade-down {
+    transform: translate(-50%, -150%) scale(1);
+}
+.modal.animation-fade-left {
+    transform: translate(150%, -50%) scale(1);
+}
+.modal.animation-fade-zoom {
+    transform: translate(-50%, -50%) scale(2);
+}
+.modal.animation-fade-zoom-up {
+    transform: translate(-50%, 150%) scale(2);
+}
+.modal.animation-fade-zoom-right {
+    transform: translate(-150%, -50%) scale(2);
+}
+.modal.animation-fade-zoom-down {
+    transform: translate(-50%, -150%) scale(2);
+}
+.modal.animation-fade-zoom-left {
+    transform: translate(150%, -50%) scale(2);
+}
+
+/* --------------------------------------------------
+Animation Open States
+-------------------------------------------------- */
+.modal.animation-fade {
+    /* No changes from base */
+}
+.modal.animation-fade-up.visible,
+.modal.animation-fade-right.visible,
+.modal.animation-fade-down.visible,
+.modal.animation-fade-left.visible,
+.modal.animation-fade-zoom.visible,
+.modal.animation-fade-zoom-up.visible,
+.modal.animation-fade-zoom-right.visible,
+.modal.animation-fade-zoom-down.visible,
+.modal.animation-fade-zoom-left.visible {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
 }

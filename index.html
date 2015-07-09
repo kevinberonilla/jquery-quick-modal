@@ -8,14 +8,11 @@
         <link rel="stylesheet" type="text/css" href="css/quickmodal.css">
     </head>
     <body>
-        <a href="#" data-modal-id="modal-1" class="open-modal" style="background: orange; color: white; display: inline-block; padding: 12px 20px;">Open Modal</a>
-        <div id="modal-1" class="modal"><div class="close-modal"></div><h2>Hello, world!</h2></div>
+        <a href="#" data-modal-id="modal-1" class="open-modal" style="background: orange; color: white; display: inline-block; padding: 12px 20px;">Open Modal 1</a>
+        <a href="#" data-modal-id="modal-2" class="open-modal" style="background: blue; color: white; display: inline-block; padding: 12px 20px;">Open Modal 2</a>
+        <div id="modal-1" class="modal"><div class="close-modal"></div><h2>Hello, world!</h2><p>This is modal 1.</p></div>
+        <div id="modal-2" class="modal"><div class="close-modal"></div><h2>Hello, world!</h2><p>This is modal 2.</p></div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="js/jquery.quick-modal.js"></script>
-        <script>
-            $(document).ready(function() {
-                $('.open-modal').quickmodal();
-            });
-        </script>
     </body>
 </html>
