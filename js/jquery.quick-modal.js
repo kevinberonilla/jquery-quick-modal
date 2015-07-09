@@ -1,17 +1,17 @@
 /* --------------------------------------------------
-jQuery Quick Modal v1.00
+jQuery Quick Modal v0.04
 
 By Kevin Beronilla
 http://www.kevinberonilla.com
 
 Fork on GitHub
-https://github.com/kevinberonilla/jquery-quickmodal
+https://github.com/kevinberonilla/jquery-quick-modal
 
 Free to use under the MIT license
 http://www.opensource.org/licenses/mit-license.php
 -------------------------------------------------- */
 (function($) { // Protect the $ alias (IIF)
-    $.fn.quickmodal = function(args) {
+    $.fn.quickModal = function(args) {
         if (!$('#modal-background').length) $('body').append('<div id="modal-background"></div>'); // Append background; do not append if re-initialized or background already exists
         
         if (args !== null && typeof args === 'string') { // Calling method
