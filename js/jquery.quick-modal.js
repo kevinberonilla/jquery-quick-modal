@@ -1,5 +1,5 @@
 /* --------------------------------------------------
-jQuery Quick Modal v0.50
+jQuery Quick Modal v1.00
 
 By Kevin Beronilla
 http://www.kevinberonilla.com
@@ -50,15 +50,22 @@ http://www.opensource.org/licenses/mit-license.php
             if (settings.speed != 250) { // Set speeds if not equal to default
                 targetModal.setSpeed(settings.speed);
                 modalBackground.setSpeed(settings.speed);
+            } else {
+                targetModal.setSpeed('');
+                modalBackground.setSpeed('');
             }
             
             if (settings.timing != 'ease') { // Set timing if not equal to default
                 targetModal.setTiming(settings.timing);
                 modalBackground.setTiming(settings.timing);
+            } else {
+                targetModal.setTiming('');
+                modalBackground.setTiming('');
             }
             
             switch (args) {
                 case 'open':
+                    $(document).unbind('keyup', keyUpCheck); // Unbind lingering events
                     bodyTag.addClass('disable-scroll');
                     modalBackground.show();
                     targetModal.show();
@@ -68,19 +75,24 @@ http://www.opensource.org/licenses/mit-license.php
                     }, 25);
                     targetModal.trigger('modalopen'); // Trigger custom 'open' event
                     
-                    closeModalLink.unbind('click') // Unbind previously bound links to prevent closing unopened modal
+                    function keyUpCheck(e) {
+                        if (e.keyCode == 27 && modal.is(':visible')) { // Esc
+                            targetModal.quickModal('close', settings);
+                        }
+                    }
+                    
+                    closeModalLink.unbind('click') // Unbind previously bound events to remove lingering settings
                         .click(function(e) { // Bind events based on options
                             e.preventDefault();
                             targetModal.quickModal('close', settings);
                         });
                     
-                    $(document).keyup(function(e) {
-                        if (e.keyCode == 27 && modal.is(':visible')) modal.quickModal('close', settings); // Esc
-                    });
+                    $(document).keyup(keyUpCheck);
                     
-                    modalBackground.click(function() {
-                        modal.quickModal('close', settings);
-                    });
+                    modalBackground.unbind('click')
+                        .click(function() { // Unbind previously bound events to remove lingering settings
+                            targetModal.quickModal('close', settings);
+                        });
                     break;
                     
                 case 'close':
