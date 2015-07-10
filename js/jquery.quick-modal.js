@@ -1,5 +1,5 @@
 /* --------------------------------------------------
-jQuery Quick Modal v1.00
+jQuery Quick Modal v1.01
 
 By Kevin Beronilla
 http://www.kevinberonilla.com
@@ -27,6 +27,20 @@ http://www.opensource.org/licenses/mit-license.php
             .css('transition-timing-function', timing);
     }
     
+    function checkSettings(modalObj, backgroundObj, settings) {
+        modalObj.setSpeed(null);
+        modalObj.setTiming(null);
+        backgroundObj.setSpeed(null);
+        backgroundObj.setTiming(null);
+        
+        if (settings.speed != 250 || settings.timing != 'ease') { // Set CSS if settings not equal to default
+            modalObj.setSpeed(settings.speed);
+            modalObj.setTiming(settings.timing);
+            backgroundObj.setSpeed(settings.speed);
+            backgroundObj.setTiming(settings.timing);
+        }
+    }
+    
     $.fn.quickModal = function(args, options) {
         if (!$('#modal-background').length) $('body').append('<div id="modal-background"></div>'); // Append background; do not append if re-initialized or background already exists
         
@@ -43,25 +57,11 @@ http://www.opensource.org/licenses/mit-license.php
                 targetModal = this,
                 modal = $('.modal');
             
+            checkSettings(targetModal, modalBackground, settings);
+            
             targetModal.removeClass()
                 .addClass('modal')
                 .addClass('animation-' + settings.animation);
-            
-            if (settings.speed != 250) { // Set speeds if not equal to default
-                targetModal.setSpeed(settings.speed);
-                modalBackground.setSpeed(settings.speed);
-            } else {
-                targetModal.setSpeed('');
-                modalBackground.setSpeed('');
-            }
-            
-            if (settings.timing != 'ease') { // Set timing if not equal to default
-                targetModal.setTiming(settings.timing);
-                modalBackground.setTiming(settings.timing);
-            } else {
-                targetModal.setTiming('');
-                modalBackground.setTiming('');
-            }
             
             switch (args) {
                 case 'open':
