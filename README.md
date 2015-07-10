@@ -81,24 +81,27 @@ The jQuery selector assigned to closing modal windows on click
 #### Trigger Modal Windows Manually
 ```javascript
 $(document).ready(function() {
-    $('#first-modal').quickModal('open');
+    $('#my-modal').quickModal('open');
     
-    $('#first-modal').quickModal('close');
+    $('#my-modal').quickModal('close');
     
-    $('#second-modal').quickModal('open', {
+    $('#my-modal').quickModal('open', {
         animation: 'fade-zoom-down',
         speed: 500,
         timing: 'ease-in-out',
         closeModalSelector: '.close-button'
     });
     
-    $('#second-modal').quickModal('close', {
+    $('#my-modal').quickModal('close', {
         animation: 'fade-left',
         speed: 750,
         timing: 'linear'
     });
 });
 ```
+**$('#my-modal')**  
+The jQuery selector object for the modal window to be triggered
+
 **.quickModal('open')**  
 Open the specified modal window with default settings
 
