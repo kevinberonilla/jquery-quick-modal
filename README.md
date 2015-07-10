@@ -127,4 +127,8 @@ $(document).ready(function() {
     });
 });
 ```
-Each modal triggers two events which you can bind functions to: 'modalopen' and 'modalclose'
+**'modalopen'**  
+The event fired immediately before a modal window is opened
+
+**'modalclose'**  
+The event fired immediately after a modal window is closed
