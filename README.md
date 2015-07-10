@@ -113,4 +113,15 @@ Close the specified modal window with the specified settings
 
 ---
 
-#### More Documentation Coming Soon
+#### Events
+```javascript
+$(document).ready(function() {
+    $('#my-modal').on('modalopen', myAwesomeFunction);
+    
+    $('#my-modal').on('modalclose', function() {
+        console.log('The modal window has been closed!');
+        myAwesomeFunction();
+    });
+});
+```
+Each modal triggers two events which you can bind functions to: 'modalopen' and 'modalclose'
