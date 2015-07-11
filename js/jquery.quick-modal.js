@@ -52,7 +52,7 @@ http://www.opensource.org/licenses/mit-license.php
                     closeModalSelector: '.close-modal'
                 }, options),
                 bodyTag = $('body'),
-                closeModalLink = $('.close-modal'),
+                closeModalLink = $(settings.closeModalSelector),
                 modalBackground = $('#modal-background'),
                 targetModal = this,
                 modal = $('.modal');
