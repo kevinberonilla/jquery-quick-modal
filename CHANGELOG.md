@@ -1,7 +1,5 @@
 # jQuery Quick Modal
 
----
-
 #### v1.02
 ##### July 20, 2015
 * Added the enableEsc and enableClickAway options
