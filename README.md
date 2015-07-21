@@ -67,13 +67,29 @@ $(document).ready(function() {
 });
 ```
 **animation**  
-The type of animation used for opening and closing modal windows; 'fade', 'fade-up', 'fade-right', 'fade-down', 'fade-left', 'fade-zoom', 'fade-zoom-up', 'fade-zoom-right', 'fade-zoom-down', 'fade-zoom-left'
+The type of animation used for opening and closing modal windows
+* 'fade'
+* 'fade-up'
+* 'fade-right'
+* 'fade-down'
+* 'fade-left'
+* 'fade-zoom'
+* 'fade-zoom-up'
+* 'fade-zoom-right'
+* 'fade-zoom-down'
+* 'fade-zoom-left'
 
 **speed**  
 The length of time (in milliseconds) for the animation
 
 **timing**   
-The timing function used to animate the modal window; 'linear', 'ease' (default), 'ease-in', 'ease-out', 'ease-in-out', 'cubic-bezier(n, n, n, n)'
+The timing function used to animate the modal window
+* 'linear'
+* 'ease'
+* 'ease-in'
+* 'ease-out'
+* 'ease-in-out'
+* 'cubic-bezier(n, n, n, n)'
 
 **closeModalSelector**   
 The jQuery selector assigned to closing modal windows on click
