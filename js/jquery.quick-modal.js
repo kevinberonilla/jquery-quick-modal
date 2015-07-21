@@ -1,5 +1,5 @@
 /* --------------------------------------------------
-jQuery Quick Modal v1.01
+jQuery Quick Modal v1.02
 
 By Kevin Beronilla
 http://www.kevinberonilla.com
@@ -49,7 +49,9 @@ http://www.opensource.org/licenses/mit-license.php
                     animation: 'fade-zoom',
                     speed: 250,
                     timing: 'ease',
-                    closeModalSelector: '.close-modal'
+                    closeModalSelector: '.close-modal',
+                    enableEsc: true,
+                    enableClickAway: true
                 }, options),
                 bodyTag = $('body'),
                 closeModalLink = $(settings.closeModalSelector),
@@ -65,6 +67,7 @@ http://www.opensource.org/licenses/mit-license.php
             
             switch (args) {
                 case 'open':
+                    modal.hide(); // Hide any currently visible modals
                     $(document).unbind('keyup', keyUpCheck); // Unbind lingering events
                     bodyTag.addClass('disable-scroll');
                     modalBackground.show();
@@ -76,7 +79,7 @@ http://www.opensource.org/licenses/mit-license.php
                     targetModal.trigger('modalopen'); // Trigger custom 'open' event
                     
                     function keyUpCheck(e) {
-                        if (e.keyCode == 27 && modal.is(':visible')) { // Esc
+                        if (e.keyCode == 27 && modal.is(':visible') && settings.enableEsc) { // Esc
                             targetModal.quickModal('close', settings);
                         }
                     }
@@ -89,10 +92,13 @@ http://www.opensource.org/licenses/mit-license.php
                     
                     $(document).keyup(keyUpCheck);
                     
-                    modalBackground.unbind('click')
-                        .click(function() { // Unbind previously bound events to remove lingering settings
-                            targetModal.quickModal('close', settings);
+                    modalBackground.unbind('click'); // Unbind previously bound events to remove lingering settings
+                    
+                    if (settings.enableClickAway) {
+                        modalBackground.click(function() {
+                                targetModal.quickModal('close', settings);
                         });
+                    }
                     break;
                     
                 case 'close':
@@ -109,6 +115,9 @@ http://www.opensource.org/licenses/mit-license.php
                         console.error('Target modal is not currently visible.');
                     }
                     break;
+                    
+                default:
+                    console.error('The method you entered does not exist.');
             }
         } else { // If initializing plugin with options
             var openModalLink = this;

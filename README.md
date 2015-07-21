@@ -56,16 +56,18 @@ The jQuery selector object assigned to trigger modal windows on click
 #### Play with Settings
 ```javascript
 $(document).ready(function() {
-    $('.open-modal').quickModal({
+    $('.open-modal').quickModal({ // Default values below
         animation: 'fade-zoom',
         speed: 250,
         timing: 'ease',
         closeModalSelector: '.close-modal'
+        enableEsc: true,
+        enableClickAway: true
     });
 });
 ```
 **animation**  
-The type of animation used for opening and closing modal windows; 'fade', 'fade-up', 'fade-right', 'fade-down', 'fade-left', 'fade-zoom' (default), 'fade-zoom-up', 'fade-zoom-right', 'fade-zoom-down', 'fade-zoom-left'
+The type of animation used for opening and closing modal windows; 'fade', 'fade-up', 'fade-right', 'fade-down', 'fade-left', 'fade-zoom', 'fade-zoom-up', 'fade-zoom-right', 'fade-zoom-down', 'fade-zoom-left'
 
 **speed**  
 The length of time (in milliseconds) for the animation
@@ -75,6 +77,12 @@ The timing function used to animate the modal window; 'linear', 'ease' (default)
 
 **closeModalSelector**   
 The jQuery selector assigned to closing modal windows on click
+
+**enableEsc**   
+Boolean for determining whether or not pressing the Esc key will close modals
+
+**enableClickAway**   
+Boolean for determining whether or not clicking the modal background will close modals
 
 ---
 
