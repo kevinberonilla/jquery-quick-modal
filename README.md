@@ -107,8 +107,6 @@ Boolean for determining whether or not clicking the modal background will close 
 $(document).ready(function() {
     $('#my-modal').quickModal('open');
     
-    $('#my-modal').quickModal('close');
-    
     $('#my-modal').quickModal('open', {
         animation: 'fade-zoom-down',
         speed: 500,
@@ -116,27 +114,45 @@ $(document).ready(function() {
         closeModalSelector: '.close-button'
     });
     
+    $('#my-modal').quickModal('close');
+    
     $('#my-modal').quickModal('close', {
         animation: 'fade-left',
         speed: 750,
         timing: 'linear'
+    });
+    
+    $('#modal-link').quickModal('trigger');
+    
+    $('#modal-link').quickModal('trigger', {
+        animation: 'fade',
+        timing: 'ease-out'
     });
 });
 ```
 **$('#my-modal')**  
 The jQuery selector object for the modal window to be triggered
 
-**.quickModal('open')**  
-Open the specified modal window with default settings
+**$('#modal-link')**  
+The jQuery selector object for the element that will trigger its modal window
 
-**.quickModal('close')**  
-Close the specified modal window with previously applied settings
+**.quickModal('open')**  
+Open the selected modal window with default settings
 
 **.quickModal('open', {...})**  
-Open the specified modal window with the specified settings
+Open the selected modal window with the specified settings
+
+**.quickModal('close')**  
+Close the selected modal window with previously applied settings
 
 **.quickModal('close', {...})**  
-Close the specified modal window with the specified settings
+Close the selected modal window with the specified settings
+
+**.quickModal('trigger')**  
+Open the target of the selected element with default settings
+
+**.quickModal('trigger', {...})**  
+Open the target of the selected element with the specified settings
 
 ---
 
@@ -146,7 +162,7 @@ $(document).ready(function() {
     $('#my-modal').on('modalopen', myAwesomeFunction);
     
     $('#my-modal').on('modalclose', function() {
-        console.log('The modal window has been closed!');
+        alert('The modal window has been closed!');
         myAwesomeFunction();
     });
 });
@@ -156,3 +172,15 @@ The event fired immediately before a modal window is opened
 
 **'modalclose'**  
 The event fired immediately after a modal window is closed
+
+---
+
+#### Call the Script with AJAX Compatibility
+```javascript
+$(document).ready(function() {
+    $('body').on('click', '.open-modal', function() {
+        $(this).quickModal('trigger');
+    });
+});
+```
+This alternative way of initializing the plugin will ensure that elements that match the selector will always open its associated modal window, regardless of whether or not they were present on page load.

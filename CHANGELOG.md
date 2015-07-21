@@ -1,8 +1,10 @@
 # jQuery Quick Modal
 
 #### v1.02
-##### July 20, 2015
-* Added the enableEsc and enableClickAway options
+##### July 21, 2015
+* Added the **enableEsc** and **enableClickAway** options
+* Added the **trigger** method
+* Added AJAX compatibility
 
 ---
 
@@ -10,7 +12,7 @@
 ##### July 14, 2015
 * Added method functionality
 * Fixed an issue where the close modal selector was not binding correctly
-* Added a min-height CSS property on the .modal class (fixes the appearance of empty modals)
+* Added a min-height CSS property on the **.modal** class (fixes the appearance of empty modals)
 
 ---
 
