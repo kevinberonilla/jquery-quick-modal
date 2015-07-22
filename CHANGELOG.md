@@ -1,9 +1,10 @@
 # jQuery Quick Modal
 
-#### v1.02 | July 21, 2015
+#### v1.02 | July 22, 2015
 * Added the **enableEsc** and **enableClickAway** options
 * Added the **trigger** method
 * Added AJAX compatibility
+* Fixed an issue where modals taller than the viewport were not scrolling correctly
 
 ---
 
