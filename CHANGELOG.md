@@ -1,5 +1,10 @@
 # jQuery Quick Modal
 
+#### v1.03 | July 30, 2015
+* Fixed an issue where the unbinding of the Esc key prevented modals to open on Firefox
+
+---
+
 #### v1.02 | July 22, 2015
 * Added the **enableEsc** and **enableClickAway** options
 * Added the **trigger** method

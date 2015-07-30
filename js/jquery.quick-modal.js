@@ -1,5 +1,5 @@
 /* --------------------------------------------------
-jQuery Quick Modal v1.02
+jQuery Quick Modal v1.03
 
 By Kevin Beronilla
 http://www.kevinberonilla.com
@@ -67,6 +67,12 @@ http://www.opensource.org/licenses/mit-license.php
             
             switch (args) {
                 case 'open':
+                    function keyUpCheck(e) {
+                        if (e.keyCode == 27 && modal.is(':visible') && settings.enableEsc) { // Esc
+                            selector.quickModal('close', settings);
+                        }
+                    }
+                    
                     modal.hide(); // Hide any currently visible modals
                     $(document).unbind('keyup', keyUpCheck); // Unbind lingering events
                     bodyTag.addClass('disable-scroll');
@@ -77,12 +83,6 @@ http://www.opensource.org/licenses/mit-license.php
                         selector.addClass('visible');
                     }, 25);
                     selector.trigger('modalopen'); // Trigger custom 'open' event
-                    
-                    function keyUpCheck(e) {
-                        if (e.keyCode == 27 && modal.is(':visible') && settings.enableEsc) { // Esc
-                            selector.quickModal('close', settings);
-                        }
-                    }
                     
                     closeModalLink.unbind('click') // Unbind previously bound events to remove lingering settings
                         .click(function(e) { // Bind events based on options
