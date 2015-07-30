@@ -1,0 +1,234 @@
+<!doctype html>
+<html>
+    <head>
+        <meta name="robots" content="noindex, nofollow">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>jQuery Quick Modal | Demo 2</title>
+        <link href="http://fonts.googleapis.com/css?family=PT+Mono|Source+Sans+Pro:400,700" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="css/quickmodal.css">
+        <style>
+            /* ----------------------------------------
+            Demo-Specific Styles
+            ---------------------------------------- */
+            * {
+                box-sizing: border-box;
+                padding: 0;
+                margin: 0;
+            }
+            html, body {
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                margin: 0;
+            }
+            body {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+                -ms-text-size-adjust: 100%;
+                -webkit-text-size-adjust: 100%;
+                color: #1e1e1e;
+                font-family: 'Source Sans Pro', sans-serif;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 24px;
+            }
+            pre {
+                font-family: 'PT Mono', monospace;
+                font-size: 20px;
+                line-height: 26px;
+                display: block;
+                max-width: 600px;
+                padding: 20px 24px;
+                margin: 0 auto;
+                overflow: auto;
+                background-color: #f8f5f0;
+                border-radius: 3px;
+            }
+            .pre-container:after {
+                content: '';
+                display: block;
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 20px 20px 0 20px;
+                border-color: #f8f5f0 transparent transparent transparent;
+                margin: 0 auto;
+                bottom: -20px;
+            }
+            .container {
+                width: 100%;
+                padding: 0 40px;
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            a.button, a.button:visited, #prev, #next {
+                display: block;
+                padding: 8px 0;
+                margin: 14px auto 0;
+                background-color: #f68b1f;
+                color: #fff;
+                text-align: center;
+                max-width: 100px;
+                font-weight: 700;
+                letter-spacing: 0.5px;
+                text-decoration: none;
+                border-radius: 3px;
+                text-transform: uppercase;
+            }
+            #prev, #next {
+                display: block;
+                padding: 8px 12px;
+                margin: 0;
+                background-color: #b2b2b2;
+                font-size: 12px;
+                position: fixed;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 20px;
+                z-index: 9997;
+            }
+            #next {
+                left: initial;
+                right: 20px;
+            }
+            p {
+                margin-top: 14px;
+            }
+            @media only screen and (max-width: 768px) {
+                pre {
+                    font-size: 16px;
+                    line-height: 22px;
+                }
+                #prev, #next {
+                    display: none;
+                }
+            }
+            @media only screen and (max-width: 480px) {
+                pre {
+                    font-size: 10px;
+                    line-height: 16px;
+                }   
+            }
+        </style>
+    </head>
+    <body>
+        <a href="demo-1.html" id="prev">Prev</a>
+        <a href="demo-3.html" id="next">Next</a>
+        <div class="container">
+            <div class="pre-container">
+                <pre>
+                    $(document).ready(function() {
+                        $('.open-modal').quickModal({
+                            animation: 'fade-left',
+                            speed: 1000,
+                            timing: 'ease-in-out',
+                            closeModalSelector: '.close-modal',
+                            enableEsc: true,
+                            enableClickAway: false
+                        });
+                    });
+                </pre>
+            </div>
+            <a href="#" class="button open-modal" data-modal-id="my-modal">Click Me</a>
+        </div>
+        <div id="my-modal" class="modal">
+            <div class="close-modal"></div>
+            <h1>Hello, world!</h1>
+            <p>Jelly beans sweet roll wafer ice cream. Icing cake lemon drops pastry soufflé cheesecake. Fruitcake bear claw cotton candy chocolate cake. Apple pie sweet macaroon cake. Bonbon jelly-o chocolate bar bonbon pudding macaroon topping pastry. Tootsie roll cupcake pastry icing. Macaroon caramels muffin sugar plum topping dessert.</p>
+            <p>Sweet topping donut liquorice brownie. Tart macaroon pastry pie fruitcake tootsie roll topping cookie. Cheesecake liquorice liquorice. Macaroon ice cream brownie muffin donut brownie soufflé powder.</p>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="js/jquery.quick-modal.js"></script>
+        <script>
+            /* ----------------------------------------
+            prettyPre Plugin by Tim Medora
+            ---------------------------------------- */
+            (function( $ ) {
+                
+                $.fn.prettyPre = function( method ) {
+                    var defaults = {
+                        ignoreExpression: /\s/ // what should be ignored?
+                    };
+                    var methods = {
+                        init: function( options ) {
+                            this.each( function() {
+                                var context = $.extend( {}, defaults, options );
+                                var $obj = $( this );
+                                var usingInnerText = true;
+                                var text = $obj.get( 0 ).innerText;
+                                // some browsers support innerText...some don't...some ONLY work with innerText.
+                                if ( typeof text == "undefined" ) {
+                                    text = $obj.html();
+                                    usingInnerText = false;
+                                }
+                                // use the first line as a baseline for how many unwanted leading whitespace characters are present
+                                var superfluousSpaceCount = 0;
+                                var pos = 0;
+                                var currentChar = text.substring( 0, 1 );
+                                while ( context.ignoreExpression.test( currentChar ) ) {
+                                    if(currentChar !== "\n"){
+                                        superfluousSpaceCount++;
+                                    }else{
+                                        superfluousSpaceCount = 0;
+                                    }
+                                    currentChar = text.substring( ++pos, pos + 1 );
+                                }
+                                // split
+                                var parts = text.split( "\n" );
+                                var reformattedText = "";
+                                // reconstruct
+                                var length = parts.length;
+                                for ( var i = 0; i < length; i++ ) {
+                                    // remove leading whitespace (represented by an empty string)
+                                    if(i === 0 && parts[0]=== ""){
+                                        continue;   
+                                    }
+                                    // cleanup, and don't append a trailing newline if we are on the last line
+                                    reformattedText += parts[i].substring( superfluousSpaceCount ) + ( i == length - 1 ? "" : "\n" );
+                                }
+                                // modify original
+                                if ( usingInnerText ) {
+                                    $obj.get( 0 ).innerText = reformattedText;
+                                }
+                                else {
+                                    // This does not appear to execute code in any browser but the onus is on the developer to not 
+                                    // put raw input from a user anywhere on a page, even if it doesn't execute!
+                                    $obj.html( reformattedText );
+                                }
+                            } );
+                        }
+                    }
+                    if ( methods[method] ) {
+                        return methods[method].apply( this, Array.prototype.slice.call( arguments, 1 ) );
+                    }
+                    else if ( typeof method === "object" || !method ) {
+                        return methods.init.apply( this, arguments );
+                    }
+                    else {
+                        $.error( "Method " + method + " does not exist on jQuery.prettyPre." );
+                    }
+                }
+            } )( jQuery );
+            
+            $(document).ready(function() {
+                $('pre').prettyPre();
+            });
+            
+            /* ----------------------------------------
+            Demo-Specific Scripts
+            ---------------------------------------- */
+            $(document).ready(function() {
+                $('.open-modal').quickModal({
+                    animation: 'fade-left',
+                    speed: 1000,
+                    timing: 'ease-in-out',
+                    closeModalSelector: '.close-modal',
+                    enableEsc: true,
+                    enableClickAway: false
+                });
+            });
+        </script>
+    </body>
+</html>
