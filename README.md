@@ -1,7 +1,7 @@
 # jQuery Quick Modal
 Easily add customizable, CSS-driven modal windows to your website.
 
-See it in action here: <a href="http://kevinberonilla.com/demos/jquery-quick-modal/demo-1.html">kevinberonilla.com/demos/jquery-quick-modal/demo-1.html</a>
+See it in action here: <a href="http://kevinberonilla.com/demos/jquery-quick-modal">kevinberonilla.com/demos/jquery-quick-modal</a>
 
 ---
 
