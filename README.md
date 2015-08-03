@@ -1,6 +1,8 @@
 # jQuery Quick Modal
 Easily add customizable, CSS-driven modal windows to your website.
 
+See it in action here: <a href="http://kevinberonilla.com/demos/jquery-quick-modal/">kevinberonilla.com/demos/jquery-quick-modal</a>
+
 ---
 
 #### Requirements
@@ -62,7 +64,8 @@ $(document).ready(function() {
         timing: 'ease',
         closeModalSelector: '.close-modal'
         enableEsc: true,
-        enableClickAway: true
+        enableClickAway: true,
+        enableBodyScroll: false
     });
 });
 ```
@@ -99,6 +102,9 @@ Boolean for determining whether or not pressing the Esc key will close modals
 
 **enableClickAway**   
 Boolean for determining whether or not clicking the modal background will close modals
+
+**enableBodyScroll**   
+Boolean for determining whether or not the body behind an open modal window is scrollable
 
 ---
 

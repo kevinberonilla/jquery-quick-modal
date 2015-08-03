@@ -1,5 +1,10 @@
 # jQuery Quick Modal
 
+#### v1.04 | August 3, 2015
+* Added the **enableBodyScroll** option
+
+---
+
 #### v1.03 | July 30, 2015
 * Fixed an issue where the unbinding of the Esc key prevented modals to open on Firefox
 

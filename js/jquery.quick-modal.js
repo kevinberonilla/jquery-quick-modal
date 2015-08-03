@@ -1,5 +1,5 @@
 /* --------------------------------------------------
-jQuery Quick Modal v1.03
+jQuery Quick Modal v1.04
 
 By Kevin Beronilla
 http://www.kevinberonilla.com
@@ -51,7 +51,8 @@ http://www.opensource.org/licenses/mit-license.php
                     timing: 'ease',
                     closeModalSelector: '.close-modal',
                     enableEsc: true,
-                    enableClickAway: true
+                    enableClickAway: true,
+                    enableBodyScroll: false
                 }, options),
                 bodyTag = $('body'),
                 closeModalLink = $(settings.closeModalSelector),
@@ -75,7 +76,11 @@ http://www.opensource.org/licenses/mit-license.php
                     
                     modal.hide(); // Hide any currently visible modals
                     $(document).unbind('keyup', keyUpCheck); // Unbind lingering events
-                    bodyTag.addClass('disable-scroll');
+                    
+                    if (!settings.enableBodyScroll) {
+                        bodyTag.addClass('disable-scroll');
+                    }
+                    
                     modalBackground.show();
                     selector.show();
                     setTimeout(function() { // Ensure elements are displayed before adding classes

@@ -1,6 +1,10 @@
 /* --------------------------------------------------
 Base Styles
 -------------------------------------------------- */
+body.disable-scroll {
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: none;
+}
 .modal {
     -webkit-transition: all 250ms ease;
     -moz-transition: all 250ms ease;
