@@ -31,13 +31,78 @@
                 font-weight: 400;
                 font-size: 16px;
                 line-height: 24px;
+                background-color: #ddd;
+            }
+            a, a:visited {
+                opacity: 1;
+                -webkit-transition: all 250ms ease;
+                transition: all 250ms ease;
+            }
+            a:hover {
+                opacity: 0.5;
+            }
+            header {
+                position: absolute;
+                top: 0;
+                z-index: 9990;
+                width: 100%;
+                height: 110px;
+                background-color: #1e1e1e;
+            }
+            #kb-logo {
+                position: absolute;
+                top: 30px;
+                left: 30px;
+                z-index: 9997;
+                padding: 10px;
+                width: 50px;
+                height: 50px;
+                border: 1px solid #fff;
+                border-radius: 50px;
+                opacity: 0.25;
+                -webkit-transition: all 250ms ease;
+                transition: all 250ms ease;
+            }
+            #kb-logo:hover {
+                opacity: 1;
+            }
+            #kb-logo img {
+                width: 30px;
+                height: auto;
+                padding-top: 4px;
+                padding-left: 1px;
+            }
+            #kb-logo:focus {
+                outline: none;
+            }
+            nav {
+                position: absolute;
+                top: 34px;
+                right: 34px;
+                display: inline-block;
+            }
+            nav a.button, nav a.button:visited {
+                display: inline-block;
+                margin-left: 10px;
+                max-width: initial;
+                padding: 8px 14px 10px;
+                margin-top: 0;
+            }
+            nav a.button.inverse, nav a.button.inverse:visited {
+                border: 1px solid #f68b1f;
+                background-color: transparent;
+            }
+            nav h1 {
+                color: #fff;
+                font-size: 20px;
+                display: inline-block;
             }
             pre {
                 font-family: 'PT Mono', monospace;
-                font-size: 20px;
-                line-height: 26px;
+                font-size: 18px;
+                line-height: 22px;
                 display: block;
-                max-width: 600px;
+                max-width: 560px;
                 padding: 20px 24px;
                 margin: 0 auto;
                 overflow: auto;
@@ -97,22 +162,39 @@
             }
             @media only screen and (max-width: 768px) {
                 pre {
-                    font-size: 16px;
-                    line-height: 22px;
+                    font-size: 14px;
+                    line-height: 20px;
                 }
                 #prev, #next {
                     display: none;
+                }
+                .mobile-off {
+                    display: none !important;
+                }
+                nav {
+                    top: 42px;
                 }
             }
             @media only screen and (max-width: 480px) {
                 pre {
                     font-size: 10px;
                     line-height: 16px;
-                }   
+                }
+                nav h1 {
+                    font-size: 16px;
+                }
             }
         </style>
     </head>
     <body>
+        <header>
+            <a id="kb-logo" href="http://www.kevinberonilla.com" target="_blank"><img src="http://www.kevinberonilla.com/hosted/kb-logo-reversed.svg"></a>
+            <nav>
+                <h1>jQuery Quick Modal</h1>
+                <a href="https://github.com/kevinberonilla/jquery-quick-modal" class="button inverse mobile-off" target="_blank">GitHub</a>
+                <a href="https://github.com/kevinberonilla/jquery-quick-modal/archive/jquery-quick-modal-master.zip" class="button mobile-off" target="_blank">Download</a>
+            </nav>
+        </header>
         <a href="demo-3.html" id="prev">Prev</a>
         <div class="container">
             <div class="pre-container">
