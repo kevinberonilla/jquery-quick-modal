@@ -1,0 +1,21 @@
+{
+  "name": "jquery-quick-modal",
+  "version": "1.04",
+  "homepage": "https://github.com/kevinberonilla/jquery-quick-modal",
+  "authors": [
+    "Kevin Beronilla <kevin.beronilla@gmail.com>"
+  ],
+  "description": "Easily add customizable, CSS-driven modal windows to your website.",
+  "keywords": [
+    "modal",
+    "popover"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
