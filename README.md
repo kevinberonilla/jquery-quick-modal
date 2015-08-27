@@ -5,7 +5,7 @@ See it in action here: <a href="http://kevinberonilla.com/demos/jquery-quick-mod
 
 ---
 
-#### Requirements
+#### Dependencies
 jQuery 1.7.0 or higher
 
 ---
@@ -14,9 +14,9 @@ jQuery 1.7.0 or higher
 Copy the provided CSS and JS files to your site and include them in the `<head>` tag. Be sure to reference the JS after jQuery.
 ```html
 <head>
-    <link rel="stylesheet" type="text/css" href="css/quickmodal.css">
+    <link rel="stylesheet" type="text/css" href="css/quick-modal.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="js/jquery-cheatcode.min.js"></script>
+    <script src="js/jquery-quick-modal.min.js"></script>
 </head>
 ```
 

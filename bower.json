@@ -10,6 +10,10 @@
     "modal",
     "popover"
   ],
+  "main": ["js/jquery.quick-modal.min.js", "css/quick-modal.min.css"],
+  "dependencies": {
+    "jquery": ">=1.7"
+  },
   "license": "MIT",
   "ignore": [
     "**/.*",
