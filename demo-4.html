@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>jQuery Quick Modal | Demo 4</title>
         <link href="http://fonts.googleapis.com/css?family=PT+Mono|Source+Sans+Pro:400,700" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" type="text/css" href="css/quickmodal.css">
+        <link rel="stylesheet" type="text/css" href="css/quick-modal.min.css">
         <style>
             /* ----------------------------------------
             Demo-Specific Styles
@@ -31,7 +31,13 @@
                 font-weight: 400;
                 font-size: 16px;
                 line-height: 24px;
-                background-color: #ddd;
+                background: -moz-linear-gradient(top,  #f68b1f 0%, #d60040 100%); /* FF3.6+ */
+                background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f68b1f), color-stop(100%,#d60040)); /* Chrome,Safari4+ */
+                background: -webkit-linear-gradient(top,  #f68b1f 0%,#d60040 100%); /* Chrome10+,Safari5.1+ */
+                background: -o-linear-gradient(top,  #f68b1f 0%,#d60040 100%); /* Opera 11.10+ */
+                background: -ms-linear-gradient(top,  #f68b1f 0%,#d60040 100%); /* IE10+ */
+                background: linear-gradient(to bottom,  #f68b1f 0%,#d60040 100%); /* W3C */
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f68b1f', endColorstr='#d60040',GradientType=0 ); /* IE6-9 */
             }
             a, a:visited {
                 opacity: 1;
@@ -87,15 +93,15 @@
                 max-width: initial;
                 padding: 8px 14px 10px;
                 margin-top: 0;
-            }
-            nav a.button.inverse, nav a.button.inverse:visited {
-                border: 1px solid #f68b1f;
                 background-color: transparent;
+                font-weight: 300;
+                text-transform: none;
             }
             nav h1 {
                 color: #fff;
                 font-size: 20px;
                 display: inline-block;
+                margin-right: 20px;
             }
             pre {
                 font-family: 'PT Mono', monospace;
@@ -145,7 +151,7 @@
                 display: block;
                 padding: 8px 12px;
                 margin: 0;
-                background-color: #b2b2b2;
+                background-color: #1e1e1e;
                 font-size: 12px;
                 position: fixed;
                 top: 50%;
@@ -191,8 +197,8 @@
             <a id="kb-logo" href="http://www.kevinberonilla.com" target="_blank"><img src="http://www.kevinberonilla.com/hosted/kb-logo-reversed.svg"></a>
             <nav>
                 <h1>jQuery Quick Modal</h1>
-                <a href="https://github.com/kevinberonilla/jquery-quick-modal" class="button inverse mobile-off" target="_blank">GitHub</a>
-                <a href="https://github.com/kevinberonilla/jquery-quick-modal/archive/master.zip" class="button mobile-off" target="_blank" download="jquery-quick-modal">Download</a>
+                <a href="https://github.com/kevinberonilla/jquery-quick-modal" class="button mobile-off" target="_blank">GitHub</a>
+                <a href="https://github.com/kevinberonilla/jquery-quick-modal/archive/master.zip" class="button mobile-off" download="jquery-quick-modal.zip">Download</a>
             </nav>
         </header>
         <a href="demo-3.html" id="prev">Prev</a>
