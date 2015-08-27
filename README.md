@@ -11,7 +11,10 @@ jQuery 1.7.0 or higher
 ---
 
 #### Installation
-Copy the provided CSS and JS files to your site and include them in the `<head>` tag. Be sure to reference the JS after jQuery.
+Install the plugin via Bower or copy the provided CSS and JS files to your site and include them in the `<head>` tag. Be sure to reference the JS after jQuery.
+```
+bower install jquery-quick-modal
+```
 ```html
 <head>
     <link rel="stylesheet" type="text/css" href="css/quick-modal.css">
