@@ -1,5 +1,11 @@
 # jQuery Quick Modal
 
+#### v1.05 | September 16, 2015
+* Code cleanup for maintainability
+
+---
+
+
 #### v1.04 | August 3, 2015
 * Added the **enableBodyScroll** option
 

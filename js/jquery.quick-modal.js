@@ -1,5 +1,5 @@
 /* --------------------------------------------------
-jQuery Quick Modal v1.04
+jQuery Quick Modal v1.05
 
 By Kevin Beronilla
 http://www.kevinberonilla.com
@@ -12,32 +12,36 @@ http://www.opensource.org/licenses/mit-license.php
 -------------------------------------------------- */
 (function($) { // Protect the $ alias (IIF)
     $.fn.setSpeed = function(speed) {
-        this.css('-webkit-transition-duration', speed + 'ms')
-            .css('-moz-transition-duration', speed + 'ms')
-            .css('-ms-transition-duration', speed + 'ms')
-            .css('-o-transition-duration', speed + 'ms')
-            .css('transition-duration', speed + 'ms');
+        return this.css({
+            '-webkit-transition-duration': speed + 'ms',
+            '-moz-transition-duration': speed + 'ms',
+            '-ms-transition-duration': speed + 'ms',
+            '-o-transition-duration': speed + 'ms',
+            'transition-duration': speed + 'ms'
+        });
     }
     
     $.fn.setTiming = function(timing) {
-        this.css('-webkit-transition-timing-function', timing)
-            .css('-moz-transition-timing-function', timing)
-            .css('-ms-transition-timing-function', timing)
-            .css('-o-transition-timing-function', timing)
-            .css('transition-timing-function', timing);
+        return this.css({
+            '-webkit-transition-timing-function': timing,
+            '-moz-transition-timing-function': timing,
+            '-ms-transition-timing-function': timing,
+            '-o-transition-timing-function': timing,
+            'transition-timing-function': timing
+        });
     }
     
     function checkSettings(modalObj, backgroundObj, settings) {
-        modalObj.setSpeed(null);
-        modalObj.setTiming(null);
-        backgroundObj.setSpeed(null);
-        backgroundObj.setTiming(null);
+        modalObj.setSpeed(null)
+            .setTiming(null);
+        backgroundObj.setSpeed(null)
+            .setTiming(null);
         
         if (settings.speed != 250 || settings.timing != 'ease') { // Set CSS if settings not equal to default
-            modalObj.setSpeed(settings.speed);
-            modalObj.setTiming(settings.timing);
-            backgroundObj.setSpeed(settings.speed);
-            backgroundObj.setTiming(settings.timing);
+            modalObj.setSpeed(settings.speed)
+                .setTiming(settings.timing);
+            backgroundObj.setSpeed(settings.speed)
+                .setTiming(settings.timing);
         }
     }
     
