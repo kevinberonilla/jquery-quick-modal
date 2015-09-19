@@ -6,7 +6,10 @@
     "Kevin Beronilla <kevin.beronilla@gmail.com>"
   ],
   "description": "Easily add customizable, CSS-driven modal windows to your website.",
-  "main": ["js/jquery.quick-modal.js", "css/quick-modal.css"],
+  "main": [
+    "js/jquery.quick-modal.js",
+    "css/quick-modal.css"
+  ],
   "dependencies": {
     "jquery": ">=1.7.0"
   },
