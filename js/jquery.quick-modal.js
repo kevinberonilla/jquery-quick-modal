@@ -1,5 +1,5 @@
 /* --------------------------------------------------
-jQuery Quick Modal v1.05
+jQuery Quick Modal v1.06
 
 By Kevin Beronilla
 http://www.kevinberonilla.com
@@ -46,8 +46,6 @@ http://www.opensource.org/licenses/mit-license.php
     }
     
     $.fn.quickModal = function(args, options) {
-        if (!$('#modal-background').length) $('body').append('<div id="modal-background"></div>'); // Append background; do not append if background already exists
-        
         if (args !== null && typeof args === 'string') { // If calling a method
             var settings = $.extend({ // Extend the default settings established below
                     animation: 'fade-zoom',
@@ -56,15 +54,17 @@ http://www.opensource.org/licenses/mit-license.php
                     closeModalSelector: '.close-modal',
                     enableEsc: true,
                     enableClickAway: true,
-                    enableBodyScroll: false
+                    enableBodyScroll: false,
+                    appendBackgroundTo: 'body'
                 }, options),
                 bodyTag = $('body'),
                 closeModalLink = $(settings.closeModalSelector),
-                modalBackground = $('#modal-background'),
                 selector = this,
                 modal = $('.modal');
             
-            checkSettings(selector, modalBackground, settings);
+            if (!$('#modal-background').length) $(settings.appendBackgroundTo).append('<div id="modal-background"></div>'); // Append background; do not append if background already exists
+            
+            checkSettings(selector, $('#modal-background'), settings);
             
             modal.removeClass()
                 .addClass('modal')
@@ -85,10 +85,10 @@ http://www.opensource.org/licenses/mit-license.php
                         bodyTag.addClass('disable-scroll');
                     }
                     
-                    modalBackground.show();
+                    $('#modal-background').show();
                     selector.show();
                     setTimeout(function() { // Ensure elements are displayed before adding classes
-                        modalBackground.addClass('visible');
+                        $('#modal-background').addClass('visible');
                         selector.addClass('visible');
                     }, 25);
                     selector.trigger('modalopen'); // Trigger custom 'open' event
@@ -101,10 +101,10 @@ http://www.opensource.org/licenses/mit-license.php
                     
                     $(document).keyup(keyUpCheck);
                     
-                    modalBackground.unbind('click'); // Unbind previously bound events to remove lingering settings
+                    $('#modal-background').unbind('click'); // Unbind previously bound events to remove lingering settings
                     
                     if (settings.enableClickAway) {
-                        modalBackground.click(function() {
+                        $('#modal-background').click(function() {
                             selector.quickModal('close', settings);
                         });
                     }
@@ -112,10 +112,10 @@ http://www.opensource.org/licenses/mit-license.php
                     
                 case 'close':
                     bodyTag.removeClass('disable-scroll');
-                    modalBackground.removeClass('visible');
+                    $('#modal-background').removeClass('visible');
                     selector.removeClass('visible');
                     setTimeout(function() {
-                        modalBackground.hide();
+                        $('#modal-background').hide();
                         selector.hide();
                         selector.trigger('modalclose'); // Trigger custom 'close' event
                     }, settings.speed);

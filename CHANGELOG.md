@@ -1,10 +1,15 @@
 # jQuery Quick Modal
 
+#### v1.06 | September 30, 2015
+* Added **appendBackgroundTo** option
+* Fixed an issue where two modal backgrounds could be appended through a specific combination of bindings
+
+---
+
 #### v1.05 | September 16, 2015
 * Code cleanup for maintainability
 
 ---
-
 
 #### v1.04 | August 3, 2015
 * Added the **enableBodyScroll** option

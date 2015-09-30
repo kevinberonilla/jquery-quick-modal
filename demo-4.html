@@ -204,7 +204,7 @@
             </nav>
         </header>
         <a href="demo-3.html" id="prev">Prev</a>
-        <div class="container">
+        <div class="container scope">
             <div class="pre-container">
                 <pre>
                     $(document).ready(function() {
@@ -213,7 +213,8 @@
                                 animation: 'fade-down',
                                 speed: 250,
                                 timing: 'ease-in',
-                                enableClickAway: false
+                                enableClickAway: false,
+                                appendBackgroundTo: 'body .scope'
                             });
                             return false;
                         });
@@ -229,12 +230,13 @@
                 </pre>
             </div>
             <a href="#" class="button open-modal" data-modal-id="my-modal">Click Me</a>
-        </div>
+            
         <div id="my-modal" class="modal">
             <h1>Hello, world!</h1>
             <p>Jelly beans sweet roll wafer ice cream. Icing cake lemon drops pastry soufflé cheesecake. Fruitcake bear claw cotton candy chocolate cake. Apple pie sweet macaroon cake. Bonbon jelly-o chocolate bar bonbon pudding macaroon topping pastry. Tootsie roll cupcake pastry icing. Macaroon caramels muffin sugar plum topping dessert.</p>
             <p>Sweet topping donut liquorice brownie. Tart macaroon pastry pie fruitcake tootsie roll topping cookie. Cheesecake liquorice liquorice. Macaroon ice cream brownie muffin donut brownie soufflé powder.</p>
             <a href="#" id="close-button" class="button" data-modal-id="my-modal">Close</a>
+        </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="js/jquery.quick-modal.js"></script>
@@ -322,7 +324,8 @@
                         animation: 'fade-down',
                         speed: 250,
                         timing: 'ease-in',
-                        enableClickAway: false
+                        enableClickAway: false,
+                        appendBackgroundTo: 'body .scope'
                     });
                     return false;
                 });

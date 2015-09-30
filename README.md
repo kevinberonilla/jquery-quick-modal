@@ -68,7 +68,8 @@ $(document).ready(function() {
         closeModalSelector: '.close-modal'
         enableEsc: true,
         enableClickAway: true,
-        enableBodyScroll: false
+        enableBodyScroll: false,
+        appendBackgroundTo: 'body'
     });
 });
 ```
@@ -108,6 +109,9 @@ Boolean for determining whether or not clicking the modal background will close 
 
 **enableBodyScroll**   
 Boolean for determining whether or not the body behind an open modal window is scrollable
+
+**appendBackgroundTo**   
+The jQuery selector to which the modal background will be appended
 
 ---
 
