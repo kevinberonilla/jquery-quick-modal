@@ -204,7 +204,7 @@
             </nav>
         </header>
         <a href="demo-3.html" id="prev">Prev</a>
-        <div class="container scope">
+        <div class="container content">
             <div class="pre-container">
                 <pre>
                     $(document).ready(function() {
@@ -213,8 +213,8 @@
                                 animation: 'fade-down',
                                 speed: 250,
                                 timing: 'ease-in',
-                                enableClickAway: false,
-                                appendBackgroundTo: 'body .scope'
+                                enableClickAway: true,
+                                appendBackgroundTo: 'body .content'
                             });
                             return false;
                         });
@@ -324,8 +324,8 @@
                         animation: 'fade-down',
                         speed: 250,
                         timing: 'ease-in',
-                        enableClickAway: false,
-                        appendBackgroundTo: 'body .scope'
+                        enableClickAway: true,
+                        appendBackgroundTo: 'body .content'
                     });
                     return false;
                 });

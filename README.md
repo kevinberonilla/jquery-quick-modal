@@ -69,7 +69,9 @@ $(document).ready(function() {
         enableEsc: true,
         enableClickAway: true,
         enableBodyScroll: false,
-        appendBackgroundTo: 'body'
+        appendBackgroundTo: 'body',
+        onOpen: function() {},
+        onClose: function() {}
     });
 });
 ```
@@ -112,6 +114,12 @@ Boolean for determining whether or not the body behind an open modal window is s
 
 **appendBackgroundTo**   
 The jQuery selector to which the modal background will be appended
+
+**onOpen**   
+The callback that fires when the modal is opened
+
+**onClose**   
+The callback that fires when the modal is closed
 
 ---
 

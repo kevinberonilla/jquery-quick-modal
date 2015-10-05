@@ -1,5 +1,5 @@
 /* --------------------------------------------------
-jQuery Quick Modal v1.06
+jQuery Quick Modal v1.07
 
 By Kevin Beronilla
 http://www.kevinberonilla.com
@@ -55,74 +55,75 @@ http://www.opensource.org/licenses/mit-license.php
                     enableEsc: true,
                     enableClickAway: true,
                     enableBodyScroll: false,
-                    appendBackgroundTo: 'body'
+                    appendBackgroundTo: 'body',
+                    onOpen: function() {},
+                    onClose: function() {}
                 }, options),
                 bodyTag = $('body'),
                 closeModalLink = $(settings.closeModalSelector),
-                selector = this,
-                modal = $('.modal');
+                modal = $('.modal'),
+                self = this;
+            
+            function keyUpCheck(e) {
+                if (e.keyCode == 27 && modal.is(':visible') && settings.enableEsc) { // Esc key events based on options
+                    self.quickModal('close', settings);
+                    bodyTag.unbind('keyup', keyUpCheck); // Unbind to prevent multiple bindings
+                }
+            }
             
             if (!$('#modal-background').length) $(settings.appendBackgroundTo).append('<div id="modal-background"></div>'); // Append background; do not append if background already exists
             
-            checkSettings(selector, $('#modal-background'), settings);
-            
+            checkSettings(self, $('#modal-background'), settings);
             modal.removeClass()
                 .addClass('modal')
                 .addClass('animation-' + settings.animation);
             
             switch (args) {
                 case 'open':
-                    function keyUpCheck(e) {
-                        if (e.keyCode == 27 && modal.is(':visible') && settings.enableEsc) { // Esc
-                            selector.quickModal('close', settings);
-                        }
-                    }
+                    if (!settings.enableBodyScroll) bodyTag.addClass('disable-scroll');
                     
                     modal.hide(); // Hide any currently visible modals
-                    $(document).unbind('keyup', keyUpCheck); // Unbind lingering events
+                    self.show();
+                    bodyTag.keyup(keyUpCheck);
+                    $('#modal-background').show()
+                        .unbind('click'); // Unbind previously bound events to remove lingering settings
                     
-                    if (!settings.enableBodyScroll) {
-                        bodyTag.addClass('disable-scroll');
-                    }
-                    
-                    $('#modal-background').show();
-                    selector.show();
                     setTimeout(function() { // Ensure elements are displayed before adding classes
                         $('#modal-background').addClass('visible');
-                        selector.addClass('visible');
+                        self.addClass('visible');
+                        settings.onOpen.call(); // Open callback
+                        self.trigger('modalopen'); // Trigger custom 'open' event
                     }, 25);
-                    selector.trigger('modalopen'); // Trigger custom 'open' event
                     
                     closeModalLink.unbind('click') // Unbind previously bound events to remove lingering settings
                         .click(function(e) { // Bind events based on options
                             e.preventDefault();
-                            selector.quickModal('close', settings);
+                            self.quickModal('close', settings);
                         });
                     
-                    $(document).keyup(keyUpCheck);
-                    
-                    $('#modal-background').unbind('click'); // Unbind previously bound events to remove lingering settings
-                    
                     if (settings.enableClickAway) {
-                        $('#modal-background').click(function() {
-                            selector.quickModal('close', settings);
+                        $('#modal-background').click(function() { 
+                            self.quickModal('close', settings);
+                            bodyTag.unbind('keyup', keyUpCheck); // Unbind to prevent multiple bindings
                         });
                     }
                     break;
                     
                 case 'close':
+                    settings.onClose.call(); // Close callback
                     bodyTag.removeClass('disable-scroll');
                     $('#modal-background').removeClass('visible');
-                    selector.removeClass('visible');
+                    self.removeClass('visible');
+                    
                     setTimeout(function() {
                         $('#modal-background').hide();
-                        selector.hide();
-                        selector.trigger('modalclose'); // Trigger custom 'close' event
+                        self.hide();
+                        self.trigger('modalclose'); // Trigger custom 'close' event
                     }, settings.speed);
                     break;
                     
                 case 'trigger':
-                    var modalId = selector.data('modal-id'),
+                    var modalId = self.data('modal-id'),
                     targetModal = $('#' + modalId);
                     
                     targetModal.quickModal('open', settings);
@@ -132,19 +133,18 @@ http://www.opensource.org/licenses/mit-license.php
                     console.error('The method you entered does not exist.');
             }
         } else { // If initializing plugin with options
-            var openModalLink = this;
+            var self = this;
             
-            openModalLink.click(function(e) {
+            self.click(function(e) {
                 e.preventDefault();
                 
                 var modalId = $(this).data('modal-id'),
                     targetModal = $('#' + modalId);
                 
-                if (modalId === undefined) console.error('No "data-modal-id" attribute is set.');
+                if (modalId === undefined) console.error('No "data-modal-id" attribute has been set.');
                 else targetModal.quickModal('open', args);
             });
         }
-        
         return this; // Return the object to enable chaining
     }
 }(jQuery));

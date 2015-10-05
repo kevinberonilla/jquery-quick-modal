@@ -1,7 +1,14 @@
 # jQuery Quick Modal
 
+#### v1.07 | October 5, 2015
+* Added the **onOpen** and **onClose** options
+* Fixed an issue where the close modal bindings persisted after unbinding
+* Code cleanup for maintainability
+
+--
+
 #### v1.06 | September 30, 2015
-* Added **appendBackgroundTo** option
+* Added the **appendBackgroundTo** option
 * Fixed an issue where two modal backgrounds could be appended through a specific combination of bindings
 
 ---
@@ -24,7 +31,6 @@
 #### v1.02 | July 22, 2015
 * Added the **enableEsc** and **enableClickAway** options
 * Added the **trigger** method
-* Added AJAX compatibility
 * Fixed an issue where modals taller than the viewport were not scrolling correctly
 
 ---
