@@ -92,11 +92,11 @@ http://www.opensource.org/licenses/mit-license.php
                     $('#modal-background').show();
                     
                     setTimeout(function() { // Ensure elements are displayed before adding classes
-                        settings.onOpen.call(); // Open callback
+                        if (settings.enableClickAway) $('#modal-background').click(closeModal);
                         $('#modal-background').addClass('visible');
                         self.addClass('visible');
                         self.trigger('modalopen'); // Trigger custom 'open' event
-                        if (settings.enableClickAway) $('#modal-background').click(closeModal);
+                        settings.onOpen.call(); // Open callback
                     }, 25);
                     
                     closeModalLink.click(function(e) { // Bind events based on options
@@ -107,10 +107,10 @@ http://www.opensource.org/licenses/mit-license.php
                     break;
                     
                 case 'close':
-                    settings.onClose.call(); // Close callback
                     bodyTag.removeClass('disable-scroll');
                     $('#modal-background').removeClass('visible');
                     self.removeClass('visible');
+                    settings.onClose.call(); // Close callback
                     
                     setTimeout(function() {
                         $('#modal-background').hide();
