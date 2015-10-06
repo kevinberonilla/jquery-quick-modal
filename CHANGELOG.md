@@ -1,11 +1,16 @@
 # jQuery Quick Modal
 
+#### v1.08 | October 5, 2015
+* Fixed an issue where the close modal bindings still persisted when a specific combination of actions were taken
+
+---
+
 #### v1.07 | October 5, 2015
 * Added the **onOpen** and **onClose** options
 * Fixed an issue where the close modal bindings persisted after unbinding
 * Code cleanup for maintainability
 
---
+---
 
 #### v1.06 | September 30, 2015
 * Added the **appendBackgroundTo** option

@@ -1,5 +1,5 @@
 /* --------------------------------------------------
-jQuery Quick Modal v1.07
+jQuery Quick Modal v1.08
 
 By Kevin Beronilla
 http://www.kevinberonilla.com
@@ -65,10 +65,14 @@ http://www.opensource.org/licenses/mit-license.php
                 self = this;
             
             function keyUpCheck(e) {
-                if (e.keyCode == 27 && modal.is(':visible') && settings.enableEsc) { // Esc key events based on options
-                    self.quickModal('close', settings);
-                    bodyTag.unbind('keyup', keyUpCheck); // Unbind to prevent multiple bindings
-                }
+                if (e.keyCode == 27 && modal.is(':visible') && settings.enableEsc) closeModal(); // Esc key events based on options
+            }
+            
+            function closeModal() {
+                self.quickModal('close', settings);
+                bodyTag.unbind('keyup', keyUpCheck);
+                closeModalLink.unbind('click');
+                $('#modal-background').unbind('click');
             }
             
             if (!$('#modal-background').length) $(settings.appendBackgroundTo).append('<div id="modal-background"></div>'); // Append background; do not append if background already exists
@@ -85,28 +89,21 @@ http://www.opensource.org/licenses/mit-license.php
                     modal.hide(); // Hide any currently visible modals
                     self.show();
                     bodyTag.keyup(keyUpCheck);
-                    $('#modal-background').show()
-                        .unbind('click'); // Unbind previously bound events to remove lingering settings
+                    $('#modal-background').show();
                     
                     setTimeout(function() { // Ensure elements are displayed before adding classes
+                        settings.onOpen.call(); // Open callback
                         $('#modal-background').addClass('visible');
                         self.addClass('visible');
-                        settings.onOpen.call(); // Open callback
                         self.trigger('modalopen'); // Trigger custom 'open' event
+                        if (settings.enableClickAway) $('#modal-background').click(closeModal);
                     }, 25);
                     
-                    closeModalLink.unbind('click') // Unbind previously bound events to remove lingering settings
-                        .click(function(e) { // Bind events based on options
-                            e.preventDefault();
-                            self.quickModal('close', settings);
-                        });
+                    closeModalLink.click(function(e) { // Bind events based on options
+                        e.preventDefault();
+                        closeModal();
+                    });
                     
-                    if (settings.enableClickAway) {
-                        $('#modal-background').click(function() { 
-                            self.quickModal('close', settings);
-                            bodyTag.unbind('keyup', keyUpCheck); // Unbind to prevent multiple bindings
-                        });
-                    }
                     break;
                     
                 case 'close':
@@ -120,6 +117,7 @@ http://www.opensource.org/licenses/mit-license.php
                         self.hide();
                         self.trigger('modalclose'); // Trigger custom 'close' event
                     }, settings.speed);
+                    
                     break;
                     
                 case 'trigger':
@@ -127,6 +125,7 @@ http://www.opensource.org/licenses/mit-license.php
                     targetModal = $('#' + modalId);
                     
                     targetModal.quickModal('open', settings);
+                    
                     break;
                     
                 default:
@@ -145,6 +144,7 @@ http://www.opensource.org/licenses/mit-license.php
                 else targetModal.quickModal('open', args);
             });
         }
+        
         return this; // Return the object to enable chaining
     }
 }(jQuery));
