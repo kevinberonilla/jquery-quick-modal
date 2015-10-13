@@ -34,13 +34,13 @@ bower install jquery-quick-modal
 </div>
 ```
 **class="open-modal"**  
-The class for the element which will trigger a modal window on click; can be changed to a selector of your choice when initialized (does not have CSS styles)
+The class for the element which will trigger a modal window on click; can be changed to a selector of your choice when initialized; default class is not styled by CSS
 
 **data-modal-id="my-modal"**  
 Specifies the ID of the modal that the link will be bound to; required (throws an error if not present)
 
 **class="modal"**   
-The class for the modal window; has CSS styles that can be edited/overridden 
+The class for the modal window; has CSS styles that can be edited/overridden
 
 **class="close-modal"**   
 The class for the element which will close an opened modal window on click; has CSS styles that can be edited/overridden; can be changed to a selector of your choice when initialized (loses CSS styles when done so)
