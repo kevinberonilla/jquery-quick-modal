@@ -28,9 +28,9 @@ bower install jquery-quick-modal
 #### Create the Markup
 ```html
 <a href="#" class="open-modal" data-modal-id="my-modal">Click here to open a modal window</a>
-<div id="my-modal" class="modal">
+<div id="my-modal" class="qm-modal">
     <h1>Hello, world!</h1>
-    <a href="#" class="close-modal">Close window</a>
+    <a href="#" class="qm-close-modal">Close window</a>
 </div>
 ```
 **class="open-modal"**  
@@ -39,10 +39,10 @@ The class for the element which will trigger a modal window on click; can be cha
 **data-modal-id="my-modal"**  
 Specifies the ID of the modal that the link will be bound to; required (throws an error if not present)
 
-**class="modal"**   
+**class="qm-modal"**   
 The class for the modal window; has CSS styles that can be edited/overridden
 
-**class="close-modal"**   
+**class="qm-close-modal"**   
 The class for the element which will close an opened modal window on click; has CSS styles that can be edited/overridden; can be changed to a selector of your choice when initialized (loses CSS styles when done so)
 
 ---
@@ -65,7 +65,7 @@ $(document).ready(function() {
         animation: 'fade-zoom',
         speed: 250,
         timing: 'ease',
-        closeModalSelector: '.close-modal'
+        closeModalSelector: '.qm-close-modal'
         enableEsc: true,
         enableClickAway: true,
         enableBodyScroll: false,
@@ -180,7 +180,7 @@ Open the target of the selected element with the specified settings
 #### Events
 ```javascript
 $(document).ready(function() {
-    $('#my-modal').on('modalopen', myAwesomeFunction);
+    $('#my-modal').on('modalopen.qm', myAwesomeFunction);
     
     $('#my-modal').on('modalclose', function() {
         alert('The modal window has been closed!');
@@ -188,10 +188,10 @@ $(document).ready(function() {
     });
 });
 ```
-**'modalopen'**  
+**'modalopen.qm'**  
 The event fired immediately before a modal window is opened
 
-**'modalclose'**  
+**'modalclose.qm'**  
 The event fired immediately after a modal window is closed
 
 ---
