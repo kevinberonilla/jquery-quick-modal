@@ -4,6 +4,7 @@
 * Updated all HTML classes and ids to use the `qm-` prefix
 * Updated all events to use the `.qm` namespace
 * Updated versioning to semantic style
+* Removed CSS vendor prefixes (no longer needed)
 
 ---
 
