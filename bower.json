@@ -1,11 +1,11 @@
 {
   "name": "jquery-quick-modal",
-  "version": "1.08",
+  "version": "2.0.0",
   "homepage": "https://github.com/kevinberonilla/jquery-quick-modal",
   "authors": [
     "Kevin Beronilla <kevin.beronilla@gmail.com>"
   ],
-  "description": "Easily add customizable, CSS-driven modal windows to your website.",
+  "description": "Easily add customizable, CSS-driven modal windows to your website",
   "main": [
     "js/jquery.quick-modal.js",
     "css/quick-modal.css"
