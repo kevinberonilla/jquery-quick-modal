@@ -117,7 +117,7 @@ http://www.opensource.org/licenses/mit-license.php
                     break;
                     
                 default:
-                    console.error('The method you entered does not exist.');
+                    console.warn('The method you entered does not exist.');
             }
         } else { // If initializing plugin with options
             var self = this;
@@ -128,7 +128,7 @@ http://www.opensource.org/licenses/mit-license.php
                 var modalId = $(this).data('modal-id'),
                     targetModal = $('#' + modalId);
                 
-                if (modalId === undefined) console.error('No "data-modal-id" attribute has been set.');
+                if (modalId === undefined) console.warn('No "data-modal-id" attribute has been set.');
                 else targetModal.quickModal('open', args);
             });
         }
