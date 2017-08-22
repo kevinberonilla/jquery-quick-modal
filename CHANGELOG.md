@@ -1,5 +1,14 @@
 # jQuery Quick Modal
 
+#### v2.0.0 | August 22, 2017
+* Updated all HTML classes and ids to use the `qm-` prefix
+* Updated all events to use the `.qm` namespace
+* Updated versioning to semantic style
+* Removed CSS vendor prefixes (no longer needed)
+* Demoted console logs for incorrect configuration to `warn` level (was `error` level)
+
+---
+
 #### v1.08 | October 5, 2015
 * Fixed an issue where the close modal bindings still persisted when a specific combination of actions were taken
 

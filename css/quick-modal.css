@@ -1,5 +1,5 @@
 /* --------------------------------------------------
-jQuery Quick Modal v1.08
+jQuery Quick Modal v2.0.0
 
 By Kevin Beronilla
 http://www.kevinberonilla.com
@@ -14,15 +14,11 @@ http://www.opensource.org/licenses/mit-license.php
 /* --------------------------------------------------
 Base Styles
 -------------------------------------------------- */
-body.disable-scroll {
+body.qm-disable-scroll {
     overflow-y: hidden;
     -webkit-overflow-scrolling: none;
 }
-.modal {
-    -webkit-transition: all 250ms ease;
-    -moz-transition: all 250ms ease;
-    -ms-transition: all 250ms ease;
-    -o-transition: all 250ms ease;
+.qm-modal {
     transition: all 250ms ease;
     display: none;
     opacity: 0;
@@ -40,7 +36,7 @@ body.disable-scroll {
     z-index: 9999;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
 }
-.modal .close-modal {
+.qm-modal .qm-close-modal {
     position: absolute;
     top: 0;
     right: 0;
@@ -48,20 +44,16 @@ body.disable-scroll {
     cursor: pointer;
     color: #ccc;
 }
-.modal .close-modal:after {
+.qm-modal .qm-close-modal:after {
     content: '\2716';
     display: inline-block;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 20px;
 }
-.modal .close-modal:focus {
+.qm-modal .qm-close-modal:focus {
     outline: none;
 }
-#modal-background {
-    -webkit-transition: all 250ms ease;
-    -moz-transition: all 250ms ease;
-    -ms-transition: all 250ms ease;
-    -o-transition: all 250ms ease;
+#qm-modal-background {
     transition: all 250ms ease;
     display: none;
     opacity: 0;
@@ -73,101 +65,57 @@ body.disable-scroll {
     width: 100%;
     height: 100%;
 }
-#modal-background.visible {
+#qm-modal-background.qm-visible {
     opacity: 1;
 }
 
 /* --------------------------------------------------
 Animation Closed States
 -------------------------------------------------- */
-.modal.animation-fade {
-    -webkit-transform: translate(-50%, -50%) scale(1);
-    -moz-transform: translate(-50%, -50%) scale(1);
-    -ms-transform: translate(-50%, -50%) scale(1);
-    -o-transform: translate(-50%, -50%) scale(1);
+.qm-modal.qm-animation-fade {
     transform: translate(-50%, -50%) scale(1);
 }
-.modal.animation-fade-up {
-    -webkit-transform: translate(-50%, 150%) scale(1);
-    -moz-transform: translate(-50%, 150%) scale(1);
-    -ms-transform: translate(-50%, 150%) scale(1);
-    -o-transform: translate(-50%, 150%) scale(1);
+.qm-modal.qm-animation-fade-up {
     transform: translate(-50%, 150%) scale(1);
 }
-.modal.animation-fade-right {
-    -webkit-transform: translate(-150%, -50%) scale(1);
-    -moz-transform: translate(-150%, -50%) scale(1);
-    -ms-transform: translate(-150%, -50%) scale(1);
-    -o-transform: translate(-150%, -50%) scale(1);
+.qm-modal.qm-animation-fade-right {
     transform: translate(-150%, -50%) scale(1);
 }
-.modal.animation-fade-down {
-    -webkit-transform: translate(-50%, -150%) scale(1);
-    -moz-transform: translate(-50%, -150%) scale(1);
-    -ms-transform: translate(-50%, -150%) scale(1);
-    -o-transform: translate(-50%, -150%) scale(1);
+.qm-modal.qm-animation-fade-down {
     transform: translate(-50%, -150%) scale(1);
 }
-.modal.animation-fade-left {
-    -webkit-transform: translate(150%, -50%) scale(1);
-    -moz-transform: translate(150%, -50%) scale(1);
-    -ms-transform: translate(150%, -50%) scale(1);
-    -o-transform: translate(150%, -50%) scale(1);
+.qm-modal.qm-animation-fade-left {
     transform: translate(150%, -50%) scale(1);
 }
-.modal.animation-fade-zoom {
-    -webkit-transform: translate(-50%, -50%) scale(2);
-    -moz-transform: translate(-50%, -50%) scale(2);
-    -ms-transform: translate(-50%, -50%) scale(2);
-    -o-transform: translate(-50%, -50%) scale(2);
+.qm-modal.qm-animation-fade-zoom {
     transform: translate(-50%, -50%) scale(2);
 }
-.modal.animation-fade-zoom-up {
-    -webkit-transform: translate(-50%, 150%) scale(2);
-    -moz-transform: translate(-50%, 150%) scale(2);
-    -ms-transform: translate(-50%, 150%) scale(2);
-    -o-transform: translate(-50%, 150%) scale(2);
+.qm-modal.qm-animation-fade-zoom-up {
     transform: translate(-50%, 150%) scale(2);
 }
-.modal.animation-fade-zoom-right {
-    -webkit-transform: translate(-150%, -50%) scale(2);
-    -moz-transform: translate(-150%, -50%) scale(2);
-    -ms-transform: translate(-150%, -50%) scale(2);
-    -o-transform: translate(-150%, -50%) scale(2);
+.qm-modal.qm-animation-fade-zoom-right {
     transform: translate(-150%, -50%) scale(2);
 }
-.modal.animation-fade-zoom-down {
-    -webkit-transform: translate(-50%, -150%) scale(2);
-    -moz-transform: translate(-50%, -150%) scale(2);
-    -ms-transform: translate(-50%, -150%) scale(2);
-    -o-transform: translate(-50%, -150%) scale(2);
+.qm-modal.qm-animation-fade-zoom-down {
     transform: translate(-50%, -150%) scale(2);
 }
-.modal.animation-fade-zoom-left {
-    -webkit-transform: translate(150%, -50%) scale(2);
-    -moz-transform: translate(150%, -50%) scale(2);
-    -ms-transform: translate(150%, -50%) scale(2);
-    -o-transform: translate(150%, -50%) scale(2);
+.qm-modal.qm-animation-fade-zoom-left {
     transform: translate(150%, -50%) scale(2);
 }
 
 /* --------------------------------------------------
 Animation Open States
 -------------------------------------------------- */
-.modal.animation-fade.visible,
-.modal.animation-fade-up.visible,
-.modal.animation-fade-right.visible,
-.modal.animation-fade-down.visible,
-.modal.animation-fade-left.visible,
-.modal.animation-fade-zoom.visible,
-.modal.animation-fade-zoom-up.visible,
-.modal.animation-fade-zoom-right.visible,
-.modal.animation-fade-zoom-down.visible,
-.modal.animation-fade-zoom-left.visible {
+.qm-modal.qm-animation-fade.qm-visible,
+.qm-modal.qm-animation-fade-up.qm-visible,
+.qm-modal.qm-animation-fade-right.qm-visible,
+.qm-modal.qm-animation-fade-down.qm-visible,
+.qm-modal.qm-animation-fade-left.qm-visible,
+.qm-modal.qm-animation-fade-zoom.qm-visible,
+.qm-modal.qm-animation-fade-zoom-up.qm-visible,
+.qm-modal.qm-animation-fade-zoom-right.qm-visible,
+.qm-modal.qm-animation-fade-zoom-down.qm-visible,
+.qm-modal.qm-animation-fade-zoom-left.qm-visible {
     opacity: 1;
-    -webkit-transform: translate(-50%, -50%) scale(1);
-    -moz-transform: translate(-50%, -50%) scale(1);
-    -ms-transform: translate(-50%, -50%) scale(1);
-    -o-transform: translate(-50%, -50%) scale(1);
     transform: translate(-50%, -50%) scale(1);
 }

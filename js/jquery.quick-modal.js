@@ -1,5 +1,5 @@
 /* --------------------------------------------------
-jQuery Quick Modal v1.08
+jQuery Quick Modal v2.0.0
 
 By Kevin Beronilla
 http://www.kevinberonilla.com
@@ -12,23 +12,11 @@ http://www.opensource.org/licenses/mit-license.php
 -------------------------------------------------- */
 (function($) { // Protect the $ alias (IIF)
     $.fn.setSpeed = function(speed) {
-        return this.css({
-            '-webkit-transition-duration': speed + 'ms',
-            '-moz-transition-duration': speed + 'ms',
-            '-ms-transition-duration': speed + 'ms',
-            '-o-transition-duration': speed + 'ms',
-            'transition-duration': speed + 'ms'
-        });
+        return this.css('transition-duration', speed + 'ms');
     }
     
     $.fn.setTiming = function(timing) {
-        return this.css({
-            '-webkit-transition-timing-function': timing,
-            '-moz-transition-timing-function': timing,
-            '-ms-transition-timing-function': timing,
-            '-o-transition-timing-function': timing,
-            'transition-timing-function': timing
-        });
+        return this.css('transition-timing-function', timing);
     }
     
     function checkSettings(modalObj, backgroundObj, settings) {
@@ -51,7 +39,7 @@ http://www.opensource.org/licenses/mit-license.php
                     animation: 'fade-zoom',
                     speed: 250,
                     timing: 'ease',
-                    closeModalSelector: '.close-modal',
+                    closeModalSelector: '.qm-close-modal',
                     enableEsc: true,
                     enableClickAway: true,
                     enableBodyScroll: false,
@@ -61,7 +49,7 @@ http://www.opensource.org/licenses/mit-license.php
                 }, options),
                 bodyTag = $('body'),
                 closeModalLink = $(settings.closeModalSelector),
-                modal = $('.modal'),
+                modal = $('.qm-modal'),
                 self = this;
             
             function keyUpCheck(e) {
@@ -72,30 +60,30 @@ http://www.opensource.org/licenses/mit-license.php
                 self.quickModal('close', settings);
                 bodyTag.unbind('keyup', keyUpCheck);
                 closeModalLink.unbind('click');
-                $('#modal-background').unbind('click');
+                $('#qm-modal-background').unbind('click');
             }
             
-            if (!$('#modal-background').length) $(settings.appendBackgroundTo).append('<div id="modal-background"></div>'); // Append background; do not append if background already exists
+            if (!$('#modal-background').length) $(settings.appendBackgroundTo).append('<div id="qm-modal-background"></div>'); // Append background; do not append if background already exists
             
-            checkSettings(self, $('#modal-background'), settings);
+            checkSettings(self, $('#qm-modal-background'), settings);
             modal.removeClass()
-                .addClass('modal')
-                .addClass('animation-' + settings.animation);
+                .addClass('qm-modal')
+                .addClass('qm-animation-' + settings.animation);
             
             switch (args) {
                 case 'open':
-                    if (!settings.enableBodyScroll) bodyTag.addClass('disable-scroll');
+                    if (!settings.enableBodyScroll) bodyTag.addClass('qm-disable-scroll');
                     
                     modal.hide(); // Hide any currently visible modals
                     self.show();
                     bodyTag.keyup(keyUpCheck);
-                    $('#modal-background').show();
+                    $('#qm-modal-background').show();
                     
                     setTimeout(function() { // Ensure elements are displayed before adding classes
-                        if (settings.enableClickAway) $('#modal-background').click(closeModal);
-                        $('#modal-background').addClass('visible');
-                        self.addClass('visible');
-                        self.trigger('modalopen'); // Trigger custom 'open' event
+                        if (settings.enableClickAway) $('#qm-modal-background').click(closeModal);
+                        $('#qm-modal-background').addClass('qm-visible');
+                        self.addClass('qm-visible');
+                        self.trigger('modalopen.qm'); // Trigger custom 'open' event
                         settings.onOpen.call(); // Open callback
                     }, 25);
                     
@@ -107,15 +95,15 @@ http://www.opensource.org/licenses/mit-license.php
                     break;
                     
                 case 'close':
-                    bodyTag.removeClass('disable-scroll');
-                    $('#modal-background').removeClass('visible');
-                    self.removeClass('visible');
+                    bodyTag.removeClass('qm-disable-scroll');
+                    $('#modal-background').removeClass('qm-visible');
+                    self.removeClass('qm-visible');
                     settings.onClose.call(); // Close callback
                     
                     setTimeout(function() {
-                        $('#modal-background').hide();
+                        $('#qm-modal-background').hide();
                         self.hide();
-                        self.trigger('modalclose'); // Trigger custom 'close' event
+                        self.trigger('modalclose.qm'); // Trigger custom 'close' event
                     }, settings.speed);
                     
                     break;
@@ -129,7 +117,7 @@ http://www.opensource.org/licenses/mit-license.php
                     break;
                     
                 default:
-                    console.error('The method you entered does not exist.');
+                    console.warn('The method you entered does not exist.');
             }
         } else { // If initializing plugin with options
             var self = this;
@@ -140,7 +128,7 @@ http://www.opensource.org/licenses/mit-license.php
                 var modalId = $(this).data('modal-id'),
                     targetModal = $('#' + modalId);
                 
-                if (modalId === undefined) console.error('No "data-modal-id" attribute has been set.');
+                if (modalId === undefined) console.warn('No "data-modal-id" attribute has been set.');
                 else targetModal.quickModal('open', args);
             });
         }
