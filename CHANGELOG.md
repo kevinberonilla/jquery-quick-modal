@@ -1,5 +1,11 @@
 # jQuery Quick Modal
 
+#### v2.0.1 | August 25, 2017
+* Fixed an issue where modal backdrops were not animating properly when closing a modal
+* Added Sass source files and Gulp tasks to support builds with custom prefixes
+
+---
+
 #### v2.0.0 | August 22, 2017
 * Updated all HTML classes and ids to use the `qm-` prefix
 * Updated all events to use the `.qm` namespace

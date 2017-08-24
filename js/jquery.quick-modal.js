@@ -102,7 +102,7 @@ http://www.opensource.org/licenses/mit-license.php
                     
                 case 'close':
                     bodyTag.removeClass('qm-disable-scroll');
-                    $('#modal-background').removeClass('qm-visible');
+                    $('#qm-modal-background').removeClass('qm-visible');
                     self.removeClass('qm-visible');
                     settings.onClose.call(); // Close callback
                     
