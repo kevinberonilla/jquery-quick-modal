@@ -4,6 +4,8 @@ var uglify = require('gulp-uglify');
 var insert = require('gulp-insert');
 var rename = require('gulp-rename');
 var runSequence = require('run-sequence');
+var sass = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
 var header = 
 `/* --------------------------------------------------
 jQuery Quick Modal v2.0.0
@@ -18,6 +20,13 @@ Free to use under the MIT license
 http://www.opensource.org/licenses/mit-license.php
 -------------------------------------------------- */
 `;
+
+gulp.task('compile:sass', () => {
+    return gulp.src(['./scss/*.scss'])
+        .pipe(sass({ outputStyle: 'expanded' }).on('error', sass.logError))
+        .pipe(autoprefixer())
+        .pipe(gulp.dest('./css'));
+});
 
 gulp.task('minify:css', () => {
     return gulp.src(['./css/*.css', '!./css/*.min.css'])
@@ -46,12 +55,13 @@ gulp.task('insert:comments:js', () => {
 });
 
 gulp.task('watch', () => {
+    gulp.watch(['./scss/*.scss'], ['compile:sass']);
     gulp.watch(['./css/*.css', '!./css/*.min.css'], ['minify:css']);
     gulp.watch(['./js/*.js', '!./js/*.min.js'], ['minify:js']);
-    gulp.watch(['./css/*.min.css'], ['insert:comments:css']);
+    gulp.watch(['./css/*.css'], ['insert:comments:css']);
     gulp.watch(['./js/*.min.js'], ['insert:comments:js']);
 });
 
 gulp.task('default', () => {
-    return runSequence('minify:css', 'minify:js', 'insert:comments:css', 'insert:comments:js', 'watch');
+    return runSequence('compile:sass', 'minify:css', 'minify:js', 'insert:comments:css', 'insert:comments:js', 'watch');
 });

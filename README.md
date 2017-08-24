@@ -205,3 +205,9 @@ $(document).ready(function() {
 });
 ```
 This alternative way of initializing the plugin will ensure that elements that match the selector will always open its associated modal window, regardless of whether or not they were present on page load.
+
+---
+
+#### Modifying the Souce Code
+
+

@@ -12,11 +12,17 @@ http://www.opensource.org/licenses/mit-license.php
 -------------------------------------------------- */
 (function($) { // Protect the $ alias (IIF)
     $.fn.setSpeed = function(speed) {
-        return this.css('transition-duration', speed + 'ms');
+        return this.css({
+            '-webkit-transition-duration': speed + 'ms',
+            'transition-duration': speed + 'ms'
+        });
     }
     
     $.fn.setTiming = function(timing) {
-        return this.css('transition-timing-function', timing);
+        return this.css({
+            '-webkit-transition-timing-function': timing,
+            'transition-timing-function': timing
+        });
     }
     
     function checkSettings(modalObj, backgroundObj, settings) {
