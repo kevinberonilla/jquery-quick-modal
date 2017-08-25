@@ -11,6 +11,8 @@ Free to use under the MIT license
 http://www.opensource.org/licenses/mit-license.php
 -------------------------------------------------- */
 (function($) { // Protect the $ alias (IIF)
+    'use strict';
+    
     $.fn.setSpeed = function(speed) {
         return this.css({
             '-webkit-transition-duration': speed + 'ms',
