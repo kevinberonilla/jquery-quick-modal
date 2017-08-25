@@ -4,6 +4,7 @@
 * Fixed an issue where modal backdrops were not animating properly when closing a modal
 * Added the `prefix` option to support builds with custom prefixes
 * Added Sass source files and Gulp tasks to support builds with custom prefixes
+* The plugin now runs in strict mode
 
 ---
 
