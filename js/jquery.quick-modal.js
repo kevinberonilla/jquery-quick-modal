@@ -60,7 +60,6 @@ http://www.opensource.org/licenses/mit-license.php
                 closeModalLink = $(settings.closeModalSelector),
                 modal = $('.' + settings.prefix + '-modal'),
                 self = this;
-            debugger;
             
             function keyUpCheck(e) {
                 if (e.keyCode == 27 && modal.is(':visible') && settings.enableEsc) closeModal(); // Esc key events based on options
