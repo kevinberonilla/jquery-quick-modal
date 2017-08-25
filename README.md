@@ -11,7 +11,7 @@ jQuery 1.7.0 or higher
 ---
 
 #### Installation
-Download the plugin via Bower or manually copy the CSS and JS files to your site, then include them in the `<head>` tag. Be sure to reference the JS after jQuery.
+Download the plugin via Bower or manually copy the CSS and JS files to your site, then include them in the `<head>` tag. Be sure to reference the JS file after jQuery.
 ```
 bower install jquery-quick-modal
 ```
@@ -212,6 +212,6 @@ This alternative way of initializing the plugin will ensure that elements that m
 
 ---
 
-#### Modifying the Souce Code
+#### Using Custom Prefixes
 
-Included in the package are Sass source source files (with a variable for managing custom prefixed classes and ids) and Gulp build scripts. Be sure to use the `prefix` option in the plugin to support your custom prefix.
+Included in the package are Sass source files (with a variable for managing custom prefixed classes and ids) and Gulp build scripts. Be sure to use the `prefix` option in the plugin to support your custom prefix.
