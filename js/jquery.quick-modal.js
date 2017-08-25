@@ -50,13 +50,15 @@ http://www.opensource.org/licenses/mit-license.php
                     enableClickAway: true,
                     enableBodyScroll: false,
                     appendBackgroundTo: 'body',
+                    prefix: 'qm',
                     onOpen: function() {},
                     onClose: function() {}
                 }, options),
                 bodyTag = $('body'),
                 closeModalLink = $(settings.closeModalSelector),
-                modal = $('.qm-modal'),
+                modal = $('.' + settings.prefix + '-modal'),
                 self = this;
+            debugger;
             
             function keyUpCheck(e) {
                 if (e.keyCode == 27 && modal.is(':visible') && settings.enableEsc) closeModal(); // Esc key events based on options
@@ -66,29 +68,29 @@ http://www.opensource.org/licenses/mit-license.php
                 self.quickModal('close', settings);
                 bodyTag.unbind('keyup', keyUpCheck);
                 closeModalLink.unbind('click');
-                $('#qm-modal-background').unbind('click');
+                $('#' + settings.prefix + '-modal-background').unbind('click');
             }
             
-            if (!$('#modal-background').length) $(settings.appendBackgroundTo).append('<div id="qm-modal-background"></div>'); // Append background; do not append if background already exists
+            if (!$('#modal-background').length) $(settings.appendBackgroundTo).append('<div id="' + settings.prefix + '-modal-background"></div>'); // Append background; do not append if background already exists
             
-            checkSettings(self, $('#qm-modal-background'), settings);
+            checkSettings(self, $('#' + settings.prefix + '-modal-background'), settings);
             modal.removeClass()
-                .addClass('qm-modal')
-                .addClass('qm-animation-' + settings.animation);
+                .addClass(settings.prefix + '-modal')
+                .addClass(settings.prefix + '-animation-' + settings.animation);
             
             switch (args) {
                 case 'open':
-                    if (!settings.enableBodyScroll) bodyTag.addClass('qm-disable-scroll');
+                    if (!settings.enableBodyScroll) bodyTag.addClass(settings.prefix + '-disable-scroll');
                     
                     modal.hide(); // Hide any currently visible modals
                     self.show();
                     bodyTag.keyup(keyUpCheck);
-                    $('#qm-modal-background').show();
+                    $('#' + settings.prefix + '-modal-background').show();
                     
                     setTimeout(function() { // Ensure elements are displayed before adding classes
-                        if (settings.enableClickAway) $('#qm-modal-background').click(closeModal);
-                        $('#qm-modal-background').addClass('qm-visible');
-                        self.addClass('qm-visible');
+                        if (settings.enableClickAway) $('#' + settings.prefix + '-modal-background').click(closeModal);
+                        $('#' + settings.prefix + '-modal-background').addClass(settings.prefix + '-visible');
+                        self.addClass(settings.prefix + '-visible');
                         self.trigger('modalopen.qm'); // Trigger custom 'open' event
                         settings.onOpen.call(); // Open callback
                     }, 25);
@@ -101,13 +103,13 @@ http://www.opensource.org/licenses/mit-license.php
                     break;
                     
                 case 'close':
-                    bodyTag.removeClass('qm-disable-scroll');
-                    $('#qm-modal-background').removeClass('qm-visible');
-                    self.removeClass('qm-visible');
+                    bodyTag.removeClass(settings.prefix + '-disable-scroll');
+                    $('#' + settings.prefix + '-modal-background').removeClass(settings.prefix + '-visible');
+                    self.removeClass(settings.prefix + '-visible');
                     settings.onClose.call(); // Close callback
                     
                     setTimeout(function() {
-                        $('#qm-modal-background').hide();
+                        $('#' + settings.prefix + '-modal-background').hide();
                         self.hide();
                         self.trigger('modalclose.qm'); // Trigger custom 'close' event
                     }, settings.speed);

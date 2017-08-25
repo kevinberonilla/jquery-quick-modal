@@ -33,16 +33,16 @@ bower install jquery-quick-modal
     <a href="#" class="qm-close-modal">Close window</a>
 </div>
 ```
-**class="open-modal"**  
+**`class="open-modal"`**  
 The class for the element which will trigger a modal window on click; can be changed to a selector of your choice when initialized; default class is not styled by CSS
 
-**data-modal-id="my-modal"**  
+**`data-modal-id="my-modal"`**  
 Specifies the ID of the modal that the link will be bound to; required (throws an error if not present)
 
-**class="qm-modal"**   
+**`class="qm-modal"`**   
 The class for the modal window; has CSS styles that can be edited/overridden
 
-**class="qm-close-modal"**   
+**`class="qm-close-modal"`**   
 The class for the element which will close an opened modal window on click; has CSS styles that can be edited/overridden; can be changed to a selector of your choice when initialized (loses CSS styles when done so)
 
 ---
@@ -53,7 +53,7 @@ $(document).ready(function() {
     $('.open-modal').quickModal();
 });
 ```
-**$('.open-modal')**  
+**`$('.open-modal')`**  
 The jQuery selector object assigned to trigger modal windows on click
 
 ---
@@ -70,55 +70,59 @@ $(document).ready(function() {
         enableClickAway: true,
         enableBodyScroll: false,
         appendBackgroundTo: 'body',
+        prefix: 'qm',
         onOpen: function() {},
         onClose: function() {}
     });
 });
 ```
-**animation**  
+**`animation`**  
 The type of animation used for opening and closing modal windows
-* 'fade'
-* 'fade-up'
-* 'fade-right'
-* 'fade-down'
-* 'fade-left'
-* 'fade-zoom'
-* 'fade-zoom-up'
-* 'fade-zoom-right'
-* 'fade-zoom-down'
-* 'fade-zoom-left'
+* `'fade'`
+* `'fade-up'`
+* `'fade-right'`
+* `'fade-down'`
+* `'fade-left'`
+* `'fade-zoom'`
+* `'fade-zoom-up'`
+* `'fade-zoom-right'`
+* `'fade-zoom-down'`
+* `'fade-zoom-left'`
 
-**speed**  
+**`speed`**  
 The length of time (in milliseconds) for the animation
 
-**timing**   
+**`timing`**   
 The timing function used to animate the modal window
-* 'linear'
-* 'ease'
-* 'ease-in'
-* 'ease-out'
-* 'ease-in-out'
-* 'cubic-bezier(n, n, n, n)'
+* `'linear'`
+* `'ease'`
+* `'ease-in'`
+* `'ease-out'`
+* `'ease-in-out'`
+* `'cubic-bezier(n, n, n, n)'`
 
-**closeModalSelector**   
+**`closeModalSelector`**   
 The jQuery selector assigned to closing modal windows on click
 
-**enableEsc**   
+**`enableEsc`**   
 Boolean for determining whether or not pressing the Esc key will close modals
 
-**enableClickAway**   
+**`enableClickAway`**   
 Boolean for determining whether or not clicking the modal background will close modals
 
-**enableBodyScroll**   
+**`enableBodyScroll`**   
 Boolean for determining whether or not the body behind an open modal window is scrollable
 
-**appendBackgroundTo**   
+**`appendBackgroundTo`**   
 The jQuery selector to which the modal background will be appended
 
-**onOpen**   
+**`prefix`**   
+String representing the prefix used for all classes and ids (only needed for builds with custom prefixed CSS; does not directly affect `closeModalSelector`)
+
+**`onOpen`**   
 The callback that fires when the modal is opened
 
-**onClose**   
+**`onClose`**   
 The callback that fires when the modal is closed
 
 ---
@@ -151,28 +155,28 @@ $(document).ready(function() {
     });
 });
 ```
-**$('#my-modal')**  
+**`$('#my-modal')`**  
 The jQuery selector object for the modal window to be triggered
 
-**$('#modal-link')**  
+**`$('#modal-link')`**  
 The jQuery selector object for the element that will trigger its modal window
 
-**.quickModal('open')**  
+**`.quickModal('open')`**  
 Open the selected modal window with default settings
 
-**.quickModal('open', {...})**  
+**`.quickModal('open', {...})`**  
 Open the selected modal window with the specified settings
 
-**.quickModal('close')**  
+**`.quickModal('close')`**  
 Close the selected modal window with previously applied settings
 
-**.quickModal('close', {...})**  
+**`.quickModal('close', {...})`**  
 Close the selected modal window with the specified settings
 
-**.quickModal('trigger')**  
+**`.quickModal('trigger')`**  
 Open the target of the selected element with default settings
 
-**.quickModal('trigger', {...})**  
+**`.quickModal('trigger', {...})`**  
 Open the target of the selected element with the specified settings
 
 ---
@@ -188,10 +192,10 @@ $(document).ready(function() {
     });
 });
 ```
-**'modalopen.qm'**  
+**`'modalopen.qm'`**  
 The event fired immediately before a modal window is opened
 
-**'modalclose.qm'**  
+**`'modalclose.qm'`**  
 The event fired immediately after a modal window is closed
 
 ---
@@ -210,4 +214,4 @@ This alternative way of initializing the plugin will ensure that elements that m
 
 #### Modifying the Souce Code
 
-
+Included in the package are Sass source source files (with a variable for managing custom prefixed classes and ids) and Gulp build scripts. Be sure to use the `prefix` option in the plugin to support your custom prefix.
