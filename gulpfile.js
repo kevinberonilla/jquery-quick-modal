@@ -8,7 +8,7 @@ var sass = require('gulp-sass');
 var autoprefixer = require('gulp-autoprefixer');
 var header = 
 `/* --------------------------------------------------
-jQuery Quick Modal v2.0.0
+jQuery Quick Modal v2.1.0
 
 By Kevin Beronilla
 http://www.kevinberonilla.com

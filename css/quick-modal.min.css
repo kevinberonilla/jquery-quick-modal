@@ -1,5 +1,5 @@
 /* --------------------------------------------------
-jQuery Quick Modal v2.0.0
+jQuery Quick Modal v2.1.0
 
 By Kevin Beronilla
 http://www.kevinberonilla.com
