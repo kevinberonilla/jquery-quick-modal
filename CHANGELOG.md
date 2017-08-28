@@ -1,5 +1,13 @@
 # jQuery Quick Modal
 
+#### v2.1.0 | August 28, 2017
+* Fixed an issue where modal backdrops were not animating properly when closing a modal
+* Added the `prefix` option to support builds with custom prefixes
+* Added Sass source files and Gulp tasks to support builds with custom prefixes
+* The plugin now runs in strict mode
+
+---
+
 #### v2.0.0 | August 22, 2017
 * Updated all HTML classes and ids to use the `qm-` prefix
 * Updated all events to use the `.qm` namespace
@@ -15,14 +23,14 @@
 ---
 
 #### v1.07 | October 5, 2015
-* Added the **onOpen** and **onClose** options
+* Added the `onOpen` and `onClose` options
 * Fixed an issue where the close modal bindings persisted after unbinding
 * Code cleanup for maintainability
 
 ---
 
 #### v1.06 | September 30, 2015
-* Added the **appendBackgroundTo** option
+* Added the `appendBackgroundTo` option
 * Fixed an issue where two modal backgrounds could be appended through a specific combination of bindings
 
 ---
@@ -33,7 +41,7 @@
 ---
 
 #### v1.04 | August 3, 2015
-* Added the **enableBodyScroll** option
+* Added the `enableBodyScroll` option
 
 ---
 
@@ -43,8 +51,8 @@
 ---
 
 #### v1.02 | July 22, 2015
-* Added the **enableEsc** and **enableClickAway** options
-* Added the **trigger** method
+* Added the `enableEsc` and `enableClickAway` options
+* Added the `trigger` method
 * Fixed an issue where modals taller than the viewport were not scrolling correctly
 
 ---
@@ -52,7 +60,7 @@
 #### v1.01 | July 14, 2015
 * Added method functionality
 * Fixed an issue where the close modal selector was not binding correctly
-* Added a min-height CSS property on the **.modal** class (fixes the appearance of empty modals)
+* Added a min-height CSS property on the `.modal` class (fixes the appearance of empty modals)
 
 ---
 
